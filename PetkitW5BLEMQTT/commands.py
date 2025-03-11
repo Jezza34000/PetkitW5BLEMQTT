@@ -32,6 +32,7 @@ class Commands:
         self.device.product_name = device_properties['product_name']
         self.device.device_type = device_properties['device_type']
         self.device.type_code = device_properties['type_code']
+        self.device.alias = device_properties['alias']
     
     async def init_device_connection(self):
         # Basically this function secures the sequence
@@ -56,9 +57,9 @@ class Commands:
             await self.init_device()
             await asyncio.sleep(3.0)
             
-            await self.ble_manager.disconnect_device(self.mac)
+            await self.ble_manager.disconnect_device(self.device.mac)
             await asyncio.sleep(1.0)
-            await self.ble_manager.connect_device(self.mac)
+            await self.ble_manager.connect_device(self.device.mac)
             await asyncio.sleep(1.0)
             await self.init_device_connection()
 
