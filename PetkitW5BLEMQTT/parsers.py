@@ -51,31 +51,57 @@ class Parsers:
         led_light_time_off = Utils.bytes_to_short(data[6:8])
         do_not_disturb_time_on = Utils.bytes_to_short(data[9:11])
         do_not_disturb_time_off = Utils.bytes_to_short(data[11:13])
-    
-        return {
-            "smart_time_on": data[0],
-            "smart_time_off": data[1],
-            "led_switch": data[2],
-            "led_brightness": data[3],
-            "led_light_time_on": led_light_time_on,
-            "led_light_time_on_readable": Utils.minutes_to_timestamp(led_light_time_on),
-            "led_on_byte1": data[4],
-            "led_on_byte2": data[5],
-            "led_light_time_off": led_light_time_off,
-            "led_light_time_off_readable": Utils.minutes_to_timestamp(led_light_time_off),
-            "led_off_byte1": data[6],
-            "led_off_byte2": data[7],
-            "do_not_disturb_switch": data[8],
-            "do_not_disturb_time_on": do_not_disturb_time_on,
-            "do_not_disturb_time_on_readable": Utils.minutes_to_timestamp(do_not_disturb_time_on),
-            "dnd_on_byte1": data[9],
-            "dnd_on_byte2": data[10],
-            "do_not_disturb_time_off": do_not_disturb_time_off,
-            "do_not_disturb_time_off_readable": Utils.minutes_to_timestamp(do_not_disturb_time_off),
-            "dnd_off_byte1": data[11],
-            "dnd_off_byte2": data[12],
-            "is_locked": data[13],
-        }
+
+        if alias == "CTW3":
+            return {
+                "smart_time_on": data[0],
+                "smart_time_off": data[1],
+                "led_switch": data[2],
+                "led_brightness": data[3],
+                "led_light_time_on": led_light_time_on,
+                "led_light_time_on_readable": Utils.minutes_to_timestamp(led_light_time_on),
+                "led_on_byte1": data[4],
+                "led_on_byte2": data[5],
+                "led_light_time_off": led_light_time_off,
+                "led_light_time_off_readable": Utils.minutes_to_timestamp(led_light_time_off),
+                "led_off_byte1": data[6],
+                "led_off_byte2": data[7],
+                "do_not_disturb_switch": data[8],
+                "do_not_disturb_time_on": do_not_disturb_time_on,
+                "do_not_disturb_time_on_readable": Utils.minutes_to_timestamp(do_not_disturb_time_on),
+                "dnd_on_byte1": data[9],
+                "dnd_on_byte2": data[10],
+                "do_not_disturb_time_off": do_not_disturb_time_off,
+                "do_not_disturb_time_off_readable": Utils.minutes_to_timestamp(do_not_disturb_time_off),
+                "dnd_off_byte1": data[11],
+                "dnd_off_byte2": data[12],
+                "is_locked": data[13],
+            }
+        else :
+            return {
+                "smart_time_on": data[0],
+                "smart_time_off": data[1],
+                "led_switch": data[2],
+                "led_brightness": data[3],
+                "led_light_time_on": led_light_time_on,
+                "led_light_time_on_readable": Utils.minutes_to_timestamp(led_light_time_on),
+                "led_on_byte1": data[4],
+                "led_on_byte2": data[5],
+                "led_light_time_off": led_light_time_off,
+                "led_light_time_off_readable": Utils.minutes_to_timestamp(led_light_time_off),
+                "led_off_byte1": data[6],
+                "led_off_byte2": data[7],
+                "do_not_disturb_switch": data[8],
+                "do_not_disturb_time_on": do_not_disturb_time_on,
+                "do_not_disturb_time_on_readable": Utils.minutes_to_timestamp(do_not_disturb_time_on),
+                "dnd_on_byte1": data[9],
+                "dnd_on_byte2": data[10],
+                "do_not_disturb_time_off": do_not_disturb_time_off,
+                "do_not_disturb_time_off_readable": Utils.minutes_to_timestamp(do_not_disturb_time_off),
+                "dnd_off_byte1": data[11],
+                "dnd_off_byte2": data[12],
+                "is_locked": data[13],
+            }
         
     # Get device ID and serial
     @staticmethod
@@ -106,6 +132,7 @@ class Parsers:
         led_light_time_off = Utils.bytes_to_short(data[22:24])
         do_not_disturb_time_on = Utils.bytes_to_short(data[25:27])
         do_not_disturb_time_off = Utils.bytes_to_short(data[27:29])
+
         
         return {
             "power_status": data[0],
