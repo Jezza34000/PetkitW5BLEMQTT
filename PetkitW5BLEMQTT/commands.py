@@ -18,7 +18,7 @@ class Commands:
     
     def init_device_data(self):
         connectiondata = self.ble_manager.connectiondata[self.device.mac].details
-        self.device.status = {"rssi": connectiondata['props']['RSSI']}
+        self.device.status = {"rssi": connectiondata['props'].get('RSSI', 0)}
         
         discovered_bytes = Utils.bytes_to_unsigned_integers(Utils.combine_byte_arrays(connectiondata['props']['ServiceData']))
         device_integer_identifier = discovered_bytes[5]
