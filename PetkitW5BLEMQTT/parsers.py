@@ -81,7 +81,6 @@ class Parsers:
 
     @staticmethod
     def device_configuration(data, alias):
-        print(data)
         if alias == "CTW3":
             # CTW3 specific decoding (10+ byte frame)
             battery_working_time = Utils.bytes_to_short(data[2:4])
